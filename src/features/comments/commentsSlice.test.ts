@@ -17,7 +17,7 @@ jest.mock('firebase/firestore', () => ({
   deleteDoc: jest.fn(),
   Timestamp: {
     now: () => ({ toMillis: () => 1234567890 }),
-  }
+  },
 }));
 
 const mockComment: Comment = {
@@ -37,7 +37,6 @@ describe('commentsSlice', () => {
   };
 
   it('повинен обробляти початковий стан', () => {
-    // @ts-ignore
     expect(commentsReducer(undefined, { type: 'unknown' })).toEqual(initialState);
   });
 
@@ -45,7 +44,7 @@ describe('commentsSlice', () => {
     it('pending: повинен ставити isLoading=true для конкретного postId', () => {
       const action = {
         type: fetchCommentsByPost.pending.type,
-        meta: { arg: 'post-1' }
+        meta: { arg: 'post-1' },
       };
 
       const state = commentsReducer(initialState, action);
@@ -59,7 +58,7 @@ describe('commentsSlice', () => {
       const action = {
         type: fetchCommentsByPost.fulfilled.type,
         payload,
-        meta: { arg: 'post-1' }
+        meta: { arg: 'post-1' },
       };
 
       const state = commentsReducer(initialState, action);
@@ -74,7 +73,7 @@ describe('commentsSlice', () => {
       const action = {
         type: fetchCommentsByPost.rejected.type,
         error: { message: errorMsg },
-        meta: { arg: 'post-1' }
+        meta: { arg: 'post-1' },
       };
 
       const state = commentsReducer(initialState, action);
@@ -88,7 +87,7 @@ describe('commentsSlice', () => {
     it('fulfilled: повинен додавати коментар до існуючого списку', () => {
       const existingState: CommentsState = {
         ...initialState,
-        byPostId: { 'post-1': [mockComment] }
+        byPostId: { 'post-1': [mockComment] },
       };
 
       const newComment = { ...mockComment, id: 'c2', text: 'New One' };
@@ -115,12 +114,12 @@ describe('commentsSlice', () => {
     it('fulfilled: повинен видаляти коментар зі списку', () => {
       const existingState: CommentsState = {
         ...initialState,
-        byPostId: { 'post-1': [mockComment] }
+        byPostId: { 'post-1': [mockComment] },
       };
 
       const action = {
         type: deleteComment.fulfilled.type,
-        payload: { postId: 'post-1', commentId: 'c1' }
+        payload: { postId: 'post-1', commentId: 'c1' },
       };
 
       const state = commentsReducer(existingState, action);
@@ -131,7 +130,7 @@ describe('commentsSlice', () => {
     it('fulfilled: не повинен падати, якщо коментарів для цього посту ще не завантажено', () => {
       const action = {
         type: deleteComment.fulfilled.type,
-        payload: { postId: 'unknown-post', commentId: 'c1' }
+        payload: { postId: 'unknown-post', commentId: 'c1' },
       };
 
       const state = commentsReducer(initialState, action);

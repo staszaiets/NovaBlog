@@ -18,7 +18,7 @@ jest.mock('firebase/firestore', () => ({
   writeBatch: jest.fn(),
   Timestamp: {
     now: () => ({ toMillis: () => 1234567890 }), // Фейковий час
-  }
+  },
 }));
 
 const mockPost: Post = {
@@ -44,7 +44,6 @@ describe('postsSlice', () => {
   };
 
   it('повинен обробляти початковий стан', () => {
-    // @ts-ignore - передаємо undefined щоб перевірити дефолт
     expect(postsReducer(undefined, { type: 'unknown' })).toEqual(initialState);
   });
 
@@ -70,7 +69,7 @@ describe('postsSlice', () => {
       const errorMsg = 'Failed to fetch';
       const action = {
         type: fetchPosts.rejected.type,
-        error: { message: errorMsg }
+        error: { message: errorMsg },
       };
       const state = postsReducer(initialState, action);
 
@@ -83,7 +82,7 @@ describe('postsSlice', () => {
     it('повинен додавати новий пост на початок списку', () => {
       const existingState: PostsState = {
         ...initialState,
-        items: [{ ...mockPost, id: '2' }]
+        items: [{ ...mockPost, id: '2' }],
       };
 
       const newPost = { ...mockPost, id: '3', title: 'New Post' };
@@ -100,21 +99,21 @@ describe('postsSlice', () => {
     it('повинен видаляти пост зі списку', () => {
       const existingState: PostsState = {
         ...initialState,
-        items: [mockPost, { ...mockPost, id: '2' }]
+        items: [mockPost, { ...mockPost, id: '2' }],
       };
 
       const action = { type: deletePost.fulfilled.type, payload: '1' };
       const state = postsReducer(existingState, action);
 
       expect(state.items).toHaveLength(1);
-      expect(state.items.find(p => p.id === '1')).toBeUndefined();
+      expect(state.items.find((p) => p.id === '1')).toBeUndefined();
     });
 
     it('повинен очищати selectedPost, якщо видалений пост був відкритий', () => {
       const existingState: PostsState = {
         ...initialState,
         items: [mockPost],
-        selectedPost: mockPost
+        selectedPost: mockPost,
       };
 
       const action = { type: deletePost.fulfilled.type, payload: '1' };

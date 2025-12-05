@@ -13,7 +13,7 @@ export default function PostDetailsPage() {
   const { slug } = useParams<{ slug: string }>();
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const { selectedPost, isLoading, error } = useAppSelector((s) => s.posts);
+  const { selectedPost, isLoading } = useAppSelector((s) => s.posts);
 
   useEffect(() => {
     if (slug) {

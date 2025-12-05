@@ -1,25 +1,24 @@
 import { calculateReadingTime, formatDate } from './textUtils';
 
 describe('textUtils', () => {
-
   describe('calculateReadingTime', () => {
     it('повертає 0 хв для пустий стрічки', () => {
-      expect(calculateReadingTime("")).toBe("0 хв. читання");
+      expect(calculateReadingTime('')).toBe('0 хв. читання');
     });
 
     it('повертає 1 хв для короткого тексту (менше 200 слів)', () => {
-      const text = "слово ".repeat(50);
-      expect(calculateReadingTime(text)).toBe("1 хв. читання");
+      const text = 'слово '.repeat(50);
+      expect(calculateReadingTime(text)).toBe('1 хв. читання');
     });
 
     it('повертає правильний час для довгого тексту (400 слів = 2 хв)', () => {
-      const text = "слово ".repeat(400);
-      expect(calculateReadingTime(text)).toBe("2 хв. читання");
+      const text = 'слово '.repeat(400);
+      expect(calculateReadingTime(text)).toBe('2 хв. читання');
     });
 
     it('округляє в більшу сторону (201 слово = 2 хв)', () => {
-      const text = "слово ".repeat(201);
-      expect(calculateReadingTime(text)).toBe("2 хв. читання");
+      const text = 'слово '.repeat(201);
+      expect(calculateReadingTime(text)).toBe('2 хв. читання');
     });
   });
 
