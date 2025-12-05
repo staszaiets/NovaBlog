@@ -1,0 +1,34 @@
+@import '../styles/reset';
+
+:root {
+  --font-source-sans-pro: 'Source Sans Pro', sans-serif;
+}
+
+body {
+  font-family: var(--font-source-sans-pro);
+  font-weight: 400;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+button {
+  font-weight: 400;
+  font-family: var(--font-source-sans-pro);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}

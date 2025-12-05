@@ -1,0 +1,147 @@
+.commentsSection {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid #eeeeee;
+  font-family: 'Inter', sans-serif;
+}
+
+.commentsSection__title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+}
+
+.commentsSection__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.commentsSection__empty {
+  color: #666;
+  font-style: italic;
+}
+
+.commentItem {
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+  position: relative;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #f4f4f4;
+  }
+}
+
+.commentItem__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.commentItem__author {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #333;
+}
+
+.commentItem__date {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.commentItem__text {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #444;
+  margin-bottom: 0;
+  white-space: pre-wrap;
+}
+
+.commentItem__deleteBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 1.2rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+
+  &:hover {
+    color: #ff4d4d;
+  }
+}
+
+.commentForm {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.commentForm__title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.commentForm__field {
+  margin-bottom: 1rem;
+}
+
+.commentForm__input,
+.commentForm__textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  background-color: #f2f2f2;
+  color: #363636;
+
+  &:focus {
+    outline: none;
+    border-color: #333;
+  }
+}
+
+.commentForm__textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.commentForm__submitBtn {
+  background-color: #1a1a1a;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #333;
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+}
+
+@media (max-width: 768px) {
+  .commentForm {
+    padding: 1.5rem;
+  }
+}

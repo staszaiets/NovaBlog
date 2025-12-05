@@ -1,0 +1,130 @@
+/* features/posts/components/EditPostModal.module.scss */
+
+.editPostModal {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(3px);
+}
+
+.editPostModal__content {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  border-radius: 16px;
+  background: #ffffff;
+  padding: 20px 20px 18px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.25);
+}
+
+.editPostModal__close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.editPostModal__title {
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.editPostModal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.editPostModal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.editPostModal__field--inline {
+  flex-direction: row;
+  align-items: center;
+}
+
+.editPostModal__label {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.editPostModal__input {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 13px;
+  color: #363636;
+}
+
+.editPostModal__textarea {
+  resize: vertical;
+}
+
+.editPostModal__checkboxLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.editPostModal__checkbox {
+  width: 16px;
+  height: 16px;
+}
+
+.editPostModal__error {
+  margin: 0;
+  font-size: 12px;
+  color: #b91c1c;
+}
+
+.editPostModal__error--global {
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.editPostModal__actions {
+  margin-top: 4px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.editPostModal__submit {
+  min-width: 120px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: none;
+  background: #111827;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.editPostModal__secondary {
+  color: #363636;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  font-size: 13px;
+  cursor: pointer;
+}

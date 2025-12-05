@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Stop the commit process if any step fails
+echo "Running type-check..."
+npm run type-check || { echo "❌ Type-check failed. Fix errors before committing."; exit 1; }
+echo "✅ Type-check passed."
+
+# Check if lint-staged is installed and run it
+if [ -f ./node_modules/.bin/lint-staged ]; then
+  echo "Running lint-staged..."
+  npm run lint-staged || { echo "❌ Lint-staged failed. Fix errors before committing."; exit 1; }
+  echo "✅ Lint-staged passed."
+else
+  echo "⚠️ lint-staged not found. Skipping lint-staged step."
+fi
+
+echo "🎉 All checks passed. Ready to commit!"
